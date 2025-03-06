@@ -8,7 +8,7 @@ class Joueur {
 
     public function __construct($nom) {
         $this->nom = $nom;
-        $this->or = 2; // Chaque joueur commence avec 2 pièces d'or
+        $this->or;
         $this->quartiers = [];
     }
 
