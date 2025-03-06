@@ -3,12 +3,11 @@ class Joueur {
     private $nom;
     private $or;
     private $quartiers;
-    private $personnage;
     private $cartesQuartier = [];
 
     public function __construct($nom) {
         $this->nom = $nom;
-        $this->or;
+        $this->or = 0;
         $this->quartiers = [];
     }
 
@@ -52,20 +51,6 @@ class Joueur {
 
     public function getCartesQuartier() {
         return $this->cartesQuartier;
-    }
-}
-
-// Exemple d'héritage
-class JoueurSpecial extends Joueur {
-    private $specialAbility;
-
-    public function __construct($nom, $specialAbility) {
-        parent::__construct($nom);
-        $this->specialAbility = $specialAbility;
-    }
-
-    public function getSpecialAbility() {
-        return $this->specialAbility;
     }
 }
 ?>
