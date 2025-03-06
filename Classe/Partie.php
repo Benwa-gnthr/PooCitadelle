@@ -1,40 +1,28 @@
 <?php
+
 class Partie {
-    private $joueurs;
-    private $pioche;
-    private $banque;
+    public $tourActuel;
+    private $joueurs = [];
 
     public function __construct() {
-        $this->joueurs = [];
-        $this->banque = new Banque();
-        $this->pioche = new Pioche();
+        $this->tourActuel = 0; // Initialisation de la propriété tourActuel
     }
 
-    public function ajouterJoueur(Joueur $joueur) {
+    public function ajouterJoueur($joueur) {
         $this->joueurs[] = $joueur;
     }
 
     public function demarrerPartie() {
         // Logique pour démarrer la partie
-        foreach ($this->joueurs as $joueur) {
-            $joueur->prendreOr($this->banque->prendreOr(2));
-        }
     }
 
     public function tourSuivant() {
+        $this->tourActuel++;
         // Logique pour passer au tour suivant
     }
 
     public function getJoueurs() {
         return $this->joueurs;
-    }
-
-    public function getBanque() {
-        return $this->banque;
-    }
-
-    public function getPioche() {
-        return $this->pioche;
     }
 }
 ?>
