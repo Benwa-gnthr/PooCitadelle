@@ -50,7 +50,7 @@ if ($command === 'start') {
 }
 
 $partie = $_SESSION['partie'];
-echo "Tour actuel: " . ($partie->tourActuel + 1) . "\n";
+echo "Tour actuel: " . ($partie->getTourActuel() + 1) . "\n";
 
 foreach ($partie->getJoueurs() as $joueur) {
     echo $joueur->getNom() . " a " . $joueur->getOr() . " pièces d'or.\n";

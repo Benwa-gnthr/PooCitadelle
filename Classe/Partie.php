@@ -1,49 +1,59 @@
 <?php
-
 class Partie {
-    public $tourActuel;
-    private $joueurs = [];
+    private $joueurs;
     private $pioche;
-    private $personnages;
+    private $banque;
+    private $tourActuel;
 
     public function __construct() {
-        $this->tourActuel = 0;
+        $this->joueurs = [];
+        $this->banque = new Banque();
         $this->pioche = new Pioche();
-        $this->personnages = $this->initialiserPersonnages();
+        $this->tourActuel = 0;
     }
 
-    public function ajouterJoueur($joueur) {
+    public function ajouterJoueur(Joueur $joueur) {
         $this->joueurs[] = $joueur;
     }
 
     public function demarrerPartie() {
-        foreach ($this->joueurs as $joueur) {
-            $joueur->recevoirCartes($this->pioche->piocher(4));
-        }
         // Logique pour démarrer la partie
+        foreach ($this->joueurs as $joueur) {
+            $joueur->prendreOr($this->banque->prendreOr(0));
+        }
     }
 
     public function tourSuivant() {
-        $this->tourActuel++;
         // Logique pour passer au tour suivant
+        $this->tourActuel++;
+        foreach ($this->joueurs as $joueur) {
+            // Exemple d'action : piocher une carte quartier
+            $quartier = $this->pioche->piocherQuartier();
+            if ($quartier) {
+                $joueur->ajouterQuartier($quartier);
+            }
+
+            // Construire un quartier si possible
+            if (count($joueur->getQuartiers()) > 0 && $joueur->getOr() >= $joueur->getQuartiers()[0]->getCout()) {
+                $joueur->construireQuartier($joueur->getQuartiers()[0]);
+            }
+        }
     }
 
     public function getJoueurs() {
         return $this->joueurs;
     }
 
-    private function initialiserPersonnages() {
-        // Initialiser les personnages du jeu Citadelles
-        return [
-            new Personnage("Assassin", "Pouvoir de l'Assassin"),
-            new Personnage("Voleur", "Pouvoir du Voleur"),
-            new Personnage("Magicien", "Pouvoir du Magicien"),
-            new Personnage("Roi", "Pouvoir du Roi"),
-            new Personnage("Évêque", "Pouvoir de l'Évêque"),
-            new Personnage("Marchand", "Pouvoir du Marchand"),
-            new Personnage("Architecte", "Pouvoir de l'Architecte"),
-            new Personnage("Condottiere", "Pouvoir du Condottiere")
-        ];
+    public function getBanque() {
+        return $this->banque;
+    }
+
+    public function getPioche() {
+        return $this->pioche;
+    }
+
+    public function getTourActuel() {
+        return $this->tourActuel;
     }
 }
 ?>
