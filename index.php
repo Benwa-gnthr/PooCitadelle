@@ -5,12 +5,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require 'Classe/Partie.php';
-require 'Classe/Banque.php';
-require 'Classe/Joueur.php';
-require 'Classe/Pioche.php';
-require 'Classe/Personnage.php';
-require 'Classe/Quartier.php';
+require_once 'Classe/Partie.php';
+require_once 'Classe/PartieSpeciale.php';
+require_once 'Classe/Banque.php';
+require_once 'Classe/Joueur.php';
+require_once 'Classe/Pioche.php';
+require_once 'Classe/Personnage.php';
+require_once 'Classe/Quartier.php';
 
 function prompt($message) {
     echo $message . ": ";

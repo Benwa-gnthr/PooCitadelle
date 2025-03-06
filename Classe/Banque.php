@@ -1,27 +1,25 @@
 <?php
 class Banque {
-    private $reserveOr;
+    private $or;
 
     public function __construct() {
-        $this->reserveOr = 30; // Exemple de réserve initiale
+        $this->or = 30; // Montant initial dans la banque
     }
 
     public function prendreOr($montant) {
-        if ($this->reserveOr >= $montant) {
-            $this->reserveOr -= $montant;
+        if ($this->or >= $montant) {
+            $this->or -= $montant;
             return $montant;
-        } else {
-            throw new Exception("Pas assez d'or dans la banque.");
         }
+        throw new Exception("Pas assez d'or dans la banque");
     }
 
-    public function donnerOr($joueur, $montant) {
-        $joueur->prendreOr($montant);
-        $this->reserveOr += $montant;
+    public function ajouterOr($montant) {
+        $this->or += $montant;
     }
 
-    public function getReserveOr() {
-        return $this->reserveOr;
+    public function getOr() {
+        return $this->or;
     }
 }
 ?>

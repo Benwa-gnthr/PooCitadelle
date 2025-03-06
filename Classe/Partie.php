@@ -17,9 +17,9 @@ class Partie {
     }
 
     public function demarrerPartie() {
-        // Logique pour démarrer la partie
+        // Donner 2 pièces d'or à chaque joueur au début
         foreach ($this->joueurs as $joueur) {
-            $joueur->prendreOr($this->banque->prendreOr(0));
+            $joueur->prendreOr($this->banque->prendreOr(2)); // On passe le montant 2 comme argument
         }
     }
 

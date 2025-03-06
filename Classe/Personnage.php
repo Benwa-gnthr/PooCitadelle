@@ -20,4 +20,15 @@ class Personnage {
         return $this->pouvoir;
     }
 }
+
+// Exemple de polymorphisme avec une interface
+interface Actionnable {
+    public function agir();
+}
+
+class PersonnageActionnable extends Personnage implements Actionnable {
+    public function agir() {
+        // Implémentation de l'action
+    }
+}
 ?>

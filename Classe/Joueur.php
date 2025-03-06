@@ -54,4 +54,18 @@ class Joueur {
         return $this->cartesQuartier;
     }
 }
+
+// Exemple d'héritage
+class JoueurSpecial extends Joueur {
+    private $specialAbility;
+
+    public function __construct($nom, $specialAbility) {
+        parent::__construct($nom);
+        $this->specialAbility = $specialAbility;
+    }
+
+    public function getSpecialAbility() {
+        return $this->specialAbility;
+    }
+}
 ?>
