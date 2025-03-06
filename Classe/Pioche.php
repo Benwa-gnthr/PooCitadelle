@@ -1,19 +1,20 @@
 <?php
 class Pioche {
-    private $personnages;
-    private $quartiers;
+    private $cartes = [];
 
     public function __construct() {
-        $this->personnages = []; // Initialiser avec des objets Personnage
-        $this->quartiers = []; // Initialiser avec des objets Quartier
+        // Initialiser les cartes de la pioche
+        $this->cartes = [
+            new Quartier("Quartier 1"),
+            new Quartier("Quartier 2"),
+            new Quartier("Quartier 3"),
+            // Ajoutez toutes les cartes de quartier nécessaires
+        ];
+        shuffle($this->cartes); // Mélanger les cartes
     }
 
-    public function piocherPersonnage() {
-        return array_pop($this->personnages);
-    }
-
-    public function piocherQuartier() {
-        return array_pop($this->quartiers);
+    public function piocher($nombre) {
+        return array_splice($this->cartes, 0, $nombre);
     }
 }
 ?>

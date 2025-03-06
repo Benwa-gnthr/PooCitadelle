@@ -11,5 +11,13 @@ class Personnage {
     public function utiliserPouvoir() {
         // Logique pour utiliser le pouvoir
     }
+
+    public function getNom() {
+        return $this->nom;
+    }
+
+    public function getPouvoir() {
+        return $this->pouvoir;
+    }
 }
 ?>

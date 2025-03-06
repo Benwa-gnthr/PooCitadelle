@@ -18,7 +18,7 @@ function prompt($message) {
 }
 
 if (!isset($argv[1])) {
-    echo "Usage: php cli.php [start|next_turn]\n";
+    echo "Usage: php index.php [start|next_turn]\n";
     exit(1);
 }
 

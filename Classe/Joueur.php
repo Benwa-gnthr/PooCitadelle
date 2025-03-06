@@ -4,10 +4,11 @@ class Joueur {
     private $or;
     private $quartiers;
     private $personnage;
+    private $cartesQuartier = [];
 
     public function __construct($nom) {
         $this->nom = $nom;
-        $this->or = 0;
+        $this->or = 2; // Chaque joueur commence avec 2 pièces d'or
         $this->quartiers = [];
     }
 
@@ -33,6 +34,10 @@ class Joueur {
         }
     }
 
+    public function recevoirCartes($cartes) {
+        $this->cartesQuartier = array_merge($this->cartesQuartier, $cartes);
+    }
+
     public function getNom() {
         return $this->nom;
     }
@@ -43,6 +48,10 @@ class Joueur {
 
     public function getQuartiers() {
         return $this->quartiers;
+    }
+
+    public function getCartesQuartier() {
+        return $this->cartesQuartier;
     }
 }
 ?>
