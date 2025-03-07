@@ -54,21 +54,6 @@ if ($command === 'start') {
     $partie->demarrerPartie();
     echo "La partie a commencé!\n";
 
-<<<<<<< HEAD
-    // Sauvegarde de la partie (Encapsulation)
-    savePartie($partie);
-} elseif ($command === 'next_turn') {
-    // Chargement de la partie (Encapsulation)
-    $partie = loadPartie();
-    if (!$partie) {
-        echo "Aucune partie en cours. Veuillez démarrer une nouvelle partie.\n";
-        exit(1);
-    }
-
-    // Appel de la méthode tourSuivant (Encapsulation)
-    $partie->tourSuivant();
-    echo "Tour suivant!\n";
-=======
     // Exécution d'un seul tour
     $partie->tourSuivant();
 
@@ -79,7 +64,6 @@ if ($command === 'start') {
     }
 
     echo "La partie est terminée!\n";
->>>>>>> 5a5645bc4b61581ba44997a0a1ab220e6367b926
 
     // Sauvegarde de la partie (Encapsulation)
     savePartie($partie);
@@ -87,18 +71,4 @@ if ($command === 'start') {
     echo "Commande inconnue: $command\n";
     exit(1);
 }
-<<<<<<< HEAD
-
-if ($partie) {
-    // Appel de la méthode getTourActuel (Encapsulation)
-    echo "Tour actuel: " . ($partie->getTourActuel() + 1) . "\n";
-
-    // Boucle sur les joueurs pour afficher leurs informations (Encapsulation)
-    foreach ($partie->getJoueurs() as $joueur) {
-        // Appel des méthodes getNom et getOr (Encapsulation)
-        echo $joueur->getNom() . " a " . $joueur->getOr() . " pièces d'or.\n";
-    }
-}
-=======
->>>>>>> 5a5645bc4b61581ba44997a0a1ab220e6367b926
 ?>
