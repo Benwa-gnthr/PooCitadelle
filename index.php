@@ -31,7 +31,7 @@ function loadPartie($filename = 'partie.save') {
 }
 
 if (!isset($argv[1])) {
-    echo "Usage: php index.php [start|next_turn]\n";
+    echo "Usage: php index.php [start]\n";
     exit(1);
 }
 
@@ -54,6 +54,7 @@ if ($command === 'start') {
     $partie->demarrerPartie();
     echo "La partie a commencé!\n";
 
+<<<<<<< HEAD
     // Sauvegarde de la partie (Encapsulation)
     savePartie($partie);
 } elseif ($command === 'next_turn') {
@@ -67,6 +68,18 @@ if ($command === 'start') {
     // Appel de la méthode tourSuivant (Encapsulation)
     $partie->tourSuivant();
     echo "Tour suivant!\n";
+=======
+    // Exécution d'un seul tour
+    $partie->tourSuivant();
+
+    echo "Tour actuel: " . ($partie->getTourActuel()) . "\n";
+
+    foreach ($partie->getJoueurs() as $joueur) {
+        echo $joueur->getNom() . " a " . $joueur->getOr() . " pièces d'or.\n";
+    }
+
+    echo "La partie est terminée!\n";
+>>>>>>> 5a5645bc4b61581ba44997a0a1ab220e6367b926
 
     // Sauvegarde de la partie (Encapsulation)
     savePartie($partie);
@@ -74,6 +87,7 @@ if ($command === 'start') {
     echo "Commande inconnue: $command\n";
     exit(1);
 }
+<<<<<<< HEAD
 
 if ($partie) {
     // Appel de la méthode getTourActuel (Encapsulation)
@@ -85,4 +99,6 @@ if ($partie) {
         echo $joueur->getNom() . " a " . $joueur->getOr() . " pièces d'or.\n";
     }
 }
+=======
+>>>>>>> 5a5645bc4b61581ba44997a0a1ab220e6367b926
 ?>
