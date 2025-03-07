@@ -27,7 +27,7 @@ function loadPartie($filename = 'partie.save') {
 }
 
 if (!isset($argv[1])) {
-    echo "Usage: php index.php [start|next_turn]\n";
+    echo "Usage: php index.php [start]\n";
     exit(1);
 }
 
@@ -46,28 +46,20 @@ if ($command === 'start') {
     $partie->demarrerPartie();
     echo "La partie a commencé!\n";
 
-    savePartie($partie);
-} elseif ($command === 'next_turn') {
-    $partie = loadPartie();
-    if (!$partie) {
-        echo "Aucune partie en cours. Veuillez démarrer une nouvelle partie.\n";
-        exit(1);
+    // Exécution d'un seul tour
+    $partie->tourSuivant();
+
+    echo "Tour actuel: " . ($partie->getTourActuel()) . "\n";
+
+    foreach ($partie->getJoueurs() as $joueur) {
+        echo $joueur->getNom() . " a " . $joueur->getOr() . " pièces d'or.\n";
     }
 
-    $partie->tourSuivant();
-    echo "Tour suivant!\n";
+    echo "La partie est terminée!\n";
 
     savePartie($partie);
 } else {
     echo "Commande inconnue: $command\n";
     exit(1);
-}
-
-if ($partie) {
-    echo "Tour actuel: " . ($partie->getTourActuel() + 1) . "\n";
-
-    foreach ($partie->getJoueurs() as $joueur) {
-        echo $joueur->getNom() . " a " . $joueur->getOr() . " pièces d'or.\n";
-    }
 }
 ?>
